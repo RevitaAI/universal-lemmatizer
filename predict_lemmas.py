@@ -71,7 +71,7 @@ class Lemmatizer(object):
         config_file_parser_class=configargparse.YAMLConfigFileParser,
         formatter_class=configargparse.ArgumentDefaultsHelpFormatter,conflict_handler="resolve")
         onmt.opts.config_opts(parser)
-        onmt.opts.add_md_help_argument(parser)
+        #onmt.opts.add_md_help_argument(parser)
         onmt.opts.translate_opts(parser)
 
         # rewrite src/output arguments because we do not want these to be required anymore (default is empty, use stdin/stdout)
