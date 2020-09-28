@@ -69,7 +69,7 @@ def train(config, args):
 
     # preprocess data
     print("Preprocessing data...", file=sys.stderr)
-    os.system("python3 {workdir}/OpenNMT-py/preprocess.py -train_src {train_input} -train_tgt {train_output} -valid_src {dev_input} -valid_tgt {dev_output} -save_data {model} {params}".format(workdir=thisdir, train_input=os.path.join(model_dir,"train.input"), train_output=os.path.join(model_dir,"train.output"), dev_input=os.path.join(model_dir,"dev.input"), dev_output=os.path.join(model_dir,"dev.output"), model=os.path.join(model_dir,"model"), params=config["preprocess_parameters"]))
+    os.system("onmt_preprocess -train_src {train_input} -train_tgt {train_output} -valid_src {dev_input} -valid_tgt {dev_output} -save_data {model} {params}".format(workdir=thisdir, train_input=os.path.join(model_dir,"train.input"), train_output=os.path.join(model_dir,"train.output"), dev_input=os.path.join(model_dir,"dev.input"), dev_output=os.path.join(model_dir,"dev.output"), model=os.path.join(model_dir,"model"), params=config["preprocess_parameters"]))
     
 
     # define how many steps you need to train to get the correct number of epochs
@@ -95,7 +95,7 @@ def train(config, args):
     # train
     print("Training model...", file=sys.stderr)
     print("Parameters:",  config["train_parameters"], file=sys.stderr)
-    os.system("python3 {workdir}/OpenNMT-py/train.py -data {model} -save_model {model} {params}".format(workdir=thisdir, model=os.path.join(model_dir,"model"), params=config["train_parameters"]))
+    os.system("onmt_train -data {model} -save_model {model} {params}".format(workdir=thisdir, model=os.path.join(model_dir,"model"), params=config["train_parameters"]))
 
     print("Done. Models saved in {x}.".format(x=model_dir), file=sys.stderr)
 
