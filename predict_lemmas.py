@@ -122,7 +122,7 @@ class Lemmatizer(object):
         # run lemmatizer if everything is not in cache
         if len(submitted_tdata)>0:
 
-            scores, predictions=self.translator.translate(src_data_iter=translate_input, batch_size=self.opt.batch_size)
+            scores, predictions=self.translator.translate(src=translate_input, batch_size=self.opt.batch_size)
             self.f_output.truncate(0) # clear this to prevent eating memory
 
             lemm_output=[l[0] for l in predictions]
